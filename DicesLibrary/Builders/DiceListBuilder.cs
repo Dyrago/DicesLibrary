@@ -38,7 +38,8 @@ namespace Dices
 
         public IEnumerable<Dice> ReturnDicesList()
         {
-            yield return (Dice)_dices;
+            foreach(Dice dice in _dices)
+                yield return dice;
         }
     }
 }
