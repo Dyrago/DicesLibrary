@@ -29,6 +29,13 @@ namespace Dices
             };
         } 
 
+        public int Throw(DiceType diceType)
+        {
+            var dice = new Dice(diceType);
+
+            return dice.Throw();
+        }
+
         public int Throw(uint maxSides)
         {
             Random random = new Random();
@@ -46,14 +53,6 @@ namespace Dices
             for (int i = 0; i < times; i++)
             {
                 yield return Throw();
-            }
-        }
-
-        public IEnumerable<int> ThrowTimes(uint times, int modifier)
-        {
-            for (int i = 0; i < times; i++)
-            {
-                yield return Throw() + modifier;
             }
         }
 
