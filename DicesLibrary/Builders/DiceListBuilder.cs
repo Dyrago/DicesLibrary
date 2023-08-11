@@ -5,7 +5,9 @@ namespace Dices
     public class DiceListBuilder
     {
 
-        private List<Dice> _dices;
+        private ICollection<Dice> _dices;
+
+        public ICollection<Dice> Dices { get { return _dices; } }
 
         public DiceListBuilder()
         {
@@ -34,15 +36,10 @@ namespace Dices
             dices.AddRange(_dices);
         }
 
-        public List<Dice> ReturnDicesList()
+        public IEnumerable<Dice> ReturnDicesList()
         {
-            var dices = new List<Dice>();
-
-            dices.AddRange(_dices);
-
-            _dices.Clear();
-
-            return dices;
+            foreach(Dice dice in _dices)
+                yield return dice;
         }
     }
 }
